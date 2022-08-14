@@ -1,0 +1,16 @@
+name: Add project
+
+on:
+  issues:
+    types: [ "opened" ]
+
+jobs:
+  add_to_project:
+    if: github.event.label.name == 'bug'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Add to Project
+        uses: technote-space/create-project-card-action@v1
+        with:
+          PROJECT: Bugs project
+          COLUMN: Triage
