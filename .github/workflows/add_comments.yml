@@ -6,8 +6,7 @@ on:
 jobs:
   add_comments:
     name: Add Comments
-    if: ${{ toJson(github.event.issue.labels) }}
     runs-on: ubuntu-latest
     steps:
      - run: |
-          echo toJson(github.event.issue.labels)
+          echo ${{ toJson(github.event.issue.labels) }}
