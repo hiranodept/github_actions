@@ -1,0 +1,11 @@
+name: Add comments when a new issue is created
+on:
+ issues:
+   types: [opened]
+
+jobs:
+  add_comments:
+    runs-on: ubuntu-latest
+    steps:
+     - run: |
+          echo 'Hello World'
