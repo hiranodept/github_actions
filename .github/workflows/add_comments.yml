@@ -6,7 +6,7 @@ on:
 
 jobs:
   add_comments:
-    if: github.event.label.name == 'new_issue'
+#     if: github.event.label.name == 'new_issue'
     name: Add Comments
     runs-on: ubuntu-latest
     permissions:
