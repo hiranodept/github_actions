@@ -6,8 +6,8 @@ on:
 jobs:
   add_comments:
     name: Add Comments
-    if: ${{ toJson(github.event.issue.labels).contains('new_issue') }}
+    if: ${{ toJson(github.event.issue.labels) }}
     runs-on: ubuntu-latest
     steps:
      - run: |
-          echo 'Hello World'
+          echo toJson(github.event.issue.labels)
