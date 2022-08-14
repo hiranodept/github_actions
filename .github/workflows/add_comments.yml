@@ -5,6 +5,8 @@ on:
 
 jobs:
   add_comments:
+    name: Add Comments
+    if: ${{ toJson(github.event.issue.labels).contains('new_issue') }}
     runs-on: ubuntu-latest
     steps:
      - run: |
