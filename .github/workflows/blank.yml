@@ -1,0 +1,31 @@
+# ref: https://qiita.com/yum_fishing/items/fd62dead30f92e24cdae
+name: create_spirnt_mtg_issue
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '0 0 * * 2' # At 09:00 on Tuesday. – https://crontab.guru
+
+jobs:
+  create_spirnt_mtg_issue:
+    name: mtg_issue
+    runs-on: ubuntu-latest
+    steps:
+      # Repo code checkout required if `template` is used
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      # https://stackoverflow.com/a/60942437
+      - name: Get current date
+        id: date
+        run: echo "::set-output name=date::$(date -d tomorrow +'%Y-%m-%d')"
+
+      - name: Scheduled Issue
+        uses: imjohnbo/issue-bot@v2.3
+        with:
+          title: スプリント定例 ${{ steps.date.outputs.date }}
+          labels: '定例MTG'
+          pinned: false
+          close-previous: true
+          linked-comments: false
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
