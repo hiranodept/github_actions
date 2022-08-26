@@ -1,4 +1,4 @@
-name: Add comments when a new issue is created
+name: Test a new issue is created
 on:
  issues:
    types: 
