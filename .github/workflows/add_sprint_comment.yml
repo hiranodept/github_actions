@@ -1,0 +1,121 @@
+name: Add comments when a new issue is created
+on:
+ issues:
+   types: 
+     - opened
+
+jobs:
+  add_comments:
+    if: ${{ contains(github.event.issue.labels.*.name, '定例MTG') }}
+    name: Add Comments
+    runs-on: ubuntu-latest
+    permissions:
+      issues: write
+    steps:
+      - name: Add Comment
+        uses: peter-evans/create-or-update-comment@v2.0.0
+        with:
+          issue-number: ${{ github.event.issue.number }}
+          body: |
+            # X月の目標
+      
+      - name: Add Comment2
+        uses: peter-evans/create-or-update-comment@v2.0.0
+        with:
+          issue-number: ${{ github.event.issue.number }}
+          body: |
+            # ブクログ通信　公開スケジュール
+          
+      - name: Add Comment3
+        uses: peter-evans/create-or-update-comment@v2.0.0
+        with:
+          issue-number: ${{ github.event.issue.number }}
+          body: |
+            # 【笠松】
+
+      - name: Add Comment4
+        uses: peter-evans/create-or-update-comment@v2.0.0
+        with:
+          issue-number: ${{ github.event.issue.number }}
+          body: |
+            # 【米窪】
+          
+      - name: Add Comment5
+        uses: peter-evans/create-or-update-comment@v2.0.0
+        with:
+          issue-number: ${{ github.event.issue.number }}
+          body: |
+            # 【斎藤】
+          
+      - name: Add Comment6
+        uses: peter-evans/create-or-update-comment@v2.0.0
+        with:
+          issue-number: ${{ github.event.issue.number }}
+          body: |
+            # 【鳥澤】
+
+      - name: Add Comment7
+        uses: peter-evans/create-or-update-comment@v2.0.0
+        with:
+          issue-number: ${{ github.event.issue.number }}
+          body: |
+            # サービス開発チーム
+
+            所要時間　15分
+
+      - name: Add Comment8
+        uses: peter-evans/create-or-update-comment@v2.0.0
+        with:
+          issue-number: ${{ github.event.issue.number }}
+          body: |
+            # hiranodept (🍎)
+          
+            ## やったこと
+          
+            ## やること・やっていること
+          
+            ## 今後のリリーススケジュール
+
+      - name: Add Comment9
+        uses: peter-evans/create-or-update-comment@v2.0.0
+        with:
+          issue-number: ${{ github.event.issue.number }}
+          body: |
+            # 長島
+          
+            ## やったこと
+          
+            ### その他
+          
+            ## やること/やっていること
+          
+            ## やりたいこと（主にmanage）
+
+      - name: Add Comment10
+        uses: peter-evans/create-or-update-comment@v2.0.0
+        with:
+          issue-number: ${{ github.event.issue.number }}
+          body: |
+            # 廣岡
+          
+            ## Web
+          
+            ## 企画
+          
+            ## その他
+
+      - name: Add Comment11
+        uses: peter-evans/create-or-update-comment@v2.0.0
+        with:
+          issue-number: ${{ github.event.issue.number }}
+          body: |
+            # モリ（デザイン）
+          
+            ## メンチン
+          
+            ## 企画
+          
+            ## コンテンツ
+          
+            ## その他
+
