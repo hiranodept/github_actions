@@ -10,7 +10,7 @@ jobs:
     name: mtg_issue
     runs-on: ubuntu-latest
     outputs:
-      output1: ${{ steps.step1.outputs.issue-number }}
+      issue-number: ${{ steps.sprint_mtg.outputs.issue-number }}
     steps:
       # Repo code checkout required if `template` is used
       - name: Checkout
@@ -22,6 +22,7 @@ jobs:
         run: echo "::set-output name=date::$(date -d tomorrow +'%Y-%m-%d')"
 
       - name: Scheduled Issue
+        id: sprint_mtg
         uses: imjohnbo/issue-bot@v3.3.6
         with:
           title: スプリント定例 ${{ steps.date.outputs.date }}
@@ -35,49 +36,49 @@ jobs:
       - name: Add Comment
         uses: peter-evans/create-or-update-comment@v2.0.0
         with:
-          issue-number: ${{ github.event.issue.number }}
+          issue-number: ${{ needs.create_spirnt_mtg_issue.outputs.issue-number }}
           body: |
             # X月の目標
       
       - name: Add Comment2
         uses: peter-evans/create-or-update-comment@v2.0.0
         with:
-          issue-number: ${{ github.event.issue.number }}
+          issue-number: ${{ needs.create_spirnt_mtg_issue.outputs.issue-number }}
           body: |
             # ブクログ通信　公開スケジュール
           
       - name: Add Comment3
         uses: peter-evans/create-or-update-comment@v2.0.0
         with:
-          issue-number: ${{ github.event.issue.number }}
+          issue-number: ${{ needs.create_spirnt_mtg_issue.outputs.issue-number }}
           body: |
             # 【笠松】
 
       - name: Add Comment4
         uses: peter-evans/create-or-update-comment@v2.0.0
         with:
-          issue-number: ${{ github.event.issue.number }}
+          issue-number: ${{ needs.create_spirnt_mtg_issue.outputs.issue-number }}
           body: |
             # 【米窪】
           
       - name: Add Comment5
         uses: peter-evans/create-or-update-comment@v2.0.0
         with:
-          issue-number: ${{ github.event.issue.number }}
+          issue-number: ${{ needs.create_spirnt_mtg_issue.outputs.issue-number }}
           body: |
             # 【斎藤】
           
       - name: Add Comment6
         uses: peter-evans/create-or-update-comment@v2.0.0
         with:
-          issue-number: ${{ github.event.issue.number }}
+          issue-number: ${{ needs.create_spirnt_mtg_issue.outputs.issue-number }}
           body: |
             # 【鳥澤】
 
       - name: Add Comment7
         uses: peter-evans/create-or-update-comment@v2.0.0
         with:
-          issue-number: ${{ github.event.issue.number }}
+          issue-number: ${{ needs.create_spirnt_mtg_issue.outputs.issue-number }}
           body: |
             # サービス開発チーム
 
@@ -86,7 +87,7 @@ jobs:
       - name: Add Comment8
         uses: peter-evans/create-or-update-comment@v2.0.0
         with:
-          issue-number: ${{ github.event.issue.number }}
+          issue-number: ${{ needs.create_spirnt_mtg_issue.outputs.issue-number }}
           body: |
             # hiranodept (🍎)
           
@@ -99,7 +100,7 @@ jobs:
       - name: Add Comment9
         uses: peter-evans/create-or-update-comment@v2.0.0
         with:
-          issue-number: ${{ github.event.issue.number }}
+          issue-number: ${{ needs.create_spirnt_mtg_issue.outputs.issue-number }}
           body: |
             # 長島
           
@@ -114,7 +115,7 @@ jobs:
       - name: Add Comment10
         uses: peter-evans/create-or-update-comment@v2.0.0
         with:
-          issue-number: ${{ github.event.issue.number }}
+          issue-number: ${{ needs.create_spirnt_mtg_issue.outputs.issue-number }}
           body: |
             # 廣岡
           
@@ -127,7 +128,7 @@ jobs:
       - name: Add Comment11
         uses: peter-evans/create-or-update-comment@v2.0.0
         with:
-          issue-number: ${{ github.event.issue.number }}
+          issue-number: ${{ needs.create_spirnt_mtg_issue.outputs.issue-number }}
           body: |
             # モリ（デザイン）
           
